@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -22,15 +23,12 @@ public class Product {
     private String supplier;
     private String category;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date created_at;
+    private LocalDateTime created_at;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updated_at;
+    private LocalDateTime updated_at;
     @PrePersist
     protected void onCreate() {
-        created_at = new Date();
-    }
-    @PostUpdate
-    protected void onUpdate() {
-        updated_at = new Date();
+      created_at = LocalDateTime.now();
+      updated_at = LocalDateTime.now();
     }
 }
