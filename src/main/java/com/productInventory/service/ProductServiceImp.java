@@ -6,6 +6,7 @@ import com.productInventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -50,7 +51,7 @@ public class ProductServiceImp implements ProductService{
         existingProduct.setName(updatedProduct.getName());
         existingProduct.setPrice(updatedProduct.getPrice());
         existingProduct.setDescription(updatedProduct.getDescription());
-        existingProduct.setUpdated_at(new Date());
+        existingProduct.setUpdated_at(LocalDateTime.now());
         return productRepository.save(existingProduct);
     }
 
